@@ -24,12 +24,12 @@ public class ProductOrderController {
 	@Autowired
 	ProductOrderService productOrderService;
 	
-	@GetMapping("products")
-	public ResponseEntity<List<ProductOrder>> findAllProducts() throws ProductOrderException
+	@GetMapping("/products")
+	public ResponseEntity<List<Products>> findAllProducts() throws ProductOrderException
 	{
-		List<ProductOrder> list = productOrderService.findAllProducts();
+		List<Products> list = productOrderService.findAllProducts();
 
-		ResponseEntity<List<ProductOrder>>  rt = new ResponseEntity<List<ProductOrder>>(list,HttpStatus.OK);
+		ResponseEntity<List<Products>>  rt = new ResponseEntity<List<Products>>(list,HttpStatus.OK);
 		return rt;
 	}
 
@@ -44,14 +44,14 @@ public class ProductOrderController {
 
 	}
 
-	@GetMapping(value = "/GetAllProductOrders")
+	/*@GetMapping(value = "/GetAllProductOrders")
 	private ResponseEntity<List<ProductOrder>> getAllOrders() {
 		
 		List<ProductOrder> ProductOrderlist = productOrderService.getAllProductOrders();
 		
 		System.out.println(ProductOrderlist);
 		return new ResponseEntity<List<ProductOrder>>(ProductOrderlist, HttpStatus.OK);
-	}
+	}*/
 	
 
 	/*private ProductOrder ProductOrderIdNotFoundFallback(@PathVariable("orderId") String orderId) {

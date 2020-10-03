@@ -8,11 +8,11 @@ import com.cg.ddms.exception.ProductOrderException;
 
 public interface ProductOrderService {
 
-	public List<ProductOrder> findAllProducts() throws ProductOrderException;
+	public List<Products> findAllProducts() throws ProductOrderException;
 
 	ProductOrder addProductOrder(ProductOrder order) throws ProductOrderException;
 
-	List<ProductOrder> getAllProductOrders();
+	//List<ProductOrder> getAllProductOrders();
 
 	ProductOrder getProductOrderDetailById(String orderId);
 	

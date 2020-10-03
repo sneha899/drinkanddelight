@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.ddms.dao.ProductOrderDao;
+import com.cg.ddms.dao.ProductsDao;
 import com.cg.ddms.entity.ProductOrder;
 import com.cg.ddms.entity.Products;
 import com.cg.ddms.exception.ProductOrderException;
@@ -14,11 +15,14 @@ import com.cg.ddms.exception.ProductOrderException;
 public class ProductOrderServiceImpl implements ProductOrderService{
 
 	@Autowired
-	ProductOrderDao productDao;
+	ProductOrderDao productOrderDao;
+	
+	@Autowired
+	ProductsDao productDao;
 	
 	@Override
-	public List<ProductOrder> findAllProducts() throws ProductOrderException {
-		List<ProductOrder> list= productDao.findAll();
+	public List<Products> findAllProducts() throws ProductOrderException {
+		List<Products> list= productDao.findAll();
 
 		return list;
 		
@@ -32,33 +36,33 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 			throw new ProductOrderException("orderId already Exists");
 		}
 		else {
-	return productDao.save(order);
+	return productOrderDao.save(order);
 		}
 	}
 
-	@Override
+	/*@Override
 	public List<ProductOrder> getAllProductOrders() {
-		return productDao.findAll();
-	}
+		return productOrderDao.findAll();
+	}*/
 
 	@Override
 	public ProductOrder getProductOrderDetailById(String orderId) {
-		return productDao.getOne(orderId);
+		return productOrderDao.getOne(orderId);
 	}
 
 	
 
 	@Override
 	public ProductOrder updateProductOrder(ProductOrder order) {
-		return productDao.save(order);
+		return productOrderDao.save(order);
 	}
 
 	@Override
 	public ProductOrder update(String orderId, String deliveryStatus) {
-		ProductOrder order=productDao.getOne(orderId);
+		ProductOrder order=productOrderDao.getOne(orderId);
 		order.setDeliveryStatus(deliveryStatus);
 		
-		return productDao.save(order);
+		return productOrderDao.save(order);
 	}
 	
 
