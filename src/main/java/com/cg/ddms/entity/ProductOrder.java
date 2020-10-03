@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="productOrder_tbl")
@@ -34,6 +37,7 @@ public class ProductOrder {
 	@Column(name="productprocessDate")
 	private Date productprocessDate;
 	
+	@OneToMany(mappedBy="products")
 	private List<Products> product=new ArrayList<>();
 
 	public ProductOrder(String orderId, String productName, double productPrice, Date productDeliveryDate,
@@ -114,10 +118,16 @@ public class ProductOrder {
 				+ ", productDeliveryDate=" + productDeliveryDate + ", productQualityCheck=" + productQualityCheck
 				+ ", productprocessDate=" + productprocessDate + ", product=" + product + "]";
 	}
+
+	public void setDeliveryStatus(String deliveryStatus) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
 	
+
 
 
 }
