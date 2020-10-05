@@ -32,7 +32,7 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 	public ProductOrder addProductOrder(ProductOrder order) throws ProductOrderException {
 
 		
-		if(productDao.existsById(order.getOrderId())) {
+		if(productOrderDao.existsById(order.getOrderId())) {
 			throw new ProductOrderException("orderId already Exists");
 		}
 		else {
@@ -40,10 +40,10 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		}
 	}
 
-	/*@Override
+	@Override
 	public List<ProductOrder> getAllProductOrders() {
 		return productOrderDao.findAll();
-	}*/
+	}
 
 	@Override
 	public ProductOrder getProductOrderDetailById(String orderId) {

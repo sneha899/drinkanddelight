@@ -12,7 +12,7 @@ public interface ProductOrderService {
 
 	ProductOrder addProductOrder(ProductOrder order) throws ProductOrderException;
 
-	//List<ProductOrder> getAllProductOrders();
+	List<ProductOrder> getAllProductOrders();
 
 	ProductOrder getProductOrderDetailById(String orderId);
 	

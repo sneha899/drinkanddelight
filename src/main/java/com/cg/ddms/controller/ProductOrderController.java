@@ -18,47 +18,46 @@ import com.cg.ddms.exception.ProductOrderException;
 import com.cg.ddms.service.ProductOrderService;
 
 @RestController
-@RequestMapping(value="/ProductOrder")
 public class ProductOrderController {
 	
 	@Autowired
 	ProductOrderService productOrderService;
 	
-	@GetMapping("/products")
+	@GetMapping("listproducts")
 	public ResponseEntity<List<Products>> findAllProducts() throws ProductOrderException
 	{
 		List<Products> list = productOrderService.findAllProducts();
 
-		ResponseEntity<List<Products>>  rt = new ResponseEntity<List<Products>>(list,HttpStatus.OK);
-		return rt;
+		return new ResponseEntity<List<Products>>(list,HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/addProductOrder")
+	@PostMapping(value = "addProductOrder")
 	public ResponseEntity<ProductOrder> addProductOrder(@RequestBody ProductOrder r) throws ProductOrderException {
 		ProductOrder e = productOrderService.addProductOrder(r);
 		if (e == null) {
 			throw new ProductOrderException("Enter Valid Id");
-		} else {
+		} 
+		else {
 			return new ResponseEntity<ProductOrder>(e, HttpStatus.OK);
 		}
 
 	}
 
-	/*@GetMapping(value = "/GetAllProductOrders")
+	@GetMapping(value = "GetAllProductOrders")
 	private ResponseEntity<List<ProductOrder>> getAllOrders() {
 		
 		List<ProductOrder> ProductOrderlist = productOrderService.getAllProductOrders();
 		
 		System.out.println(ProductOrderlist);
 		return new ResponseEntity<List<ProductOrder>>(ProductOrderlist, HttpStatus.OK);
-	}*/
+	}
 	
 
 	/*private ProductOrder ProductOrderIdNotFoundFallback(@PathVariable("orderId") String orderId) {
 		
-			return new ProductOrder("1000", "TV", 1000000);
-	}*/
-
+			return new ProductOrder("1004", "chair", 1000,12/10/2020,"Flexible",11/02/2020);
+	}
+*/
 
 
 }
